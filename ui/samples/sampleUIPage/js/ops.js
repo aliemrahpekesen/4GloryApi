@@ -1,4 +1,5 @@
 var baseUrl = 'http://localhost:8080';
+var fullMemberListOnPage=null;
 
 $(document).ready(function(){
 	  getAllMembers();
@@ -38,6 +39,7 @@ function addMember(){
 		});
 }
 
+
 function getAllMembers(){
 var memberList=null;
 $("#memberList").find('tbody').empty();
@@ -62,11 +64,13 @@ $.ajax({
 };
 
 function fillMemberListTable(data){
+fullMemberListOnPage=null;
 var memberList = data._embedded.members;
+fullMemberListOnPage = memberList;
 $.each(memberList,function(i,obj){
 	var objId = retrieveMemberIdOfObject(obj);
 	var manipulationColumn   = '<button type="button" class="btn btn-blue btn-sm">'
-					  +'<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>'
+					  +'<span class="glyphicon glyphicon-edit" aria-hidden="true" onClick="editMember('+objId+');"></span>'
 					  +'</button>'
 					  +'<button type="button" class="btn btn btn-danger btn-sm">'
 					  +'<span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="deleteMember('+objId+');"></span>'
@@ -86,15 +90,15 @@ $.each(memberList,function(i,obj){
 });
 };
 
-function deleteMember(id){
+function deleteMember(objId){
 $('#confirmModal').modal({
 			  backdrop: 'static',
 			  keyboard: false,
 			  show:true
-			}).one('click', '#delete', function(e) {
-			     $.ajax({
+			}).find('#delete').unbind("click").click(function(){
+				  $.ajax({
 					type:'DELETE',
-					url: baseUrl+'/member?id='+id,
+					url: baseUrl+'/member?id='+objId,
 					contentType:'application/json',
 					dataType: 'text', 
 					success: function(data){
@@ -111,23 +115,54 @@ function retrieveMemberIdOfObject(obj){
 	return obj._links.self.href.substring((baseUrl+'/members').length+1);
 }
 
-function updateMember(id){
-$('#updateModal').modal({
+function editMember(objId){
+$("#memberDetails").empty();
+console.log('Edit Modal is opened');
+var editObject=null;
+for(i=0;i<fullMemberListOnPage.length;i++){
+  var searchId = retrieveMemberIdOfObject(fullMemberListOnPage[i]);
+  if(searchId==objId){
+	editObject=fullMemberListOnPage[i];
+	break;
+  }
+}
+$("#memberDetails")
+		.append($('<td colspan="2">').append('<form class="form-horizontal">'
+								+'		<div class="form-group">'
+								+'			<label class="control-label col-sm-2" for="name">Name:</label>'
+								+'			<div class="col-sm-10">'
+								+'				<input type="name" class="form-control" id="newName" value="'+editObject.name+'">'
+								+'			</div>'
+								+'		</div>'
+								+'		<div class="form-group">'
+								+'			<label class="control-label col-sm-2" for="surname">Surname:</label>'
+								+'			<div class="col-sm-10">'
+								+'				<input type="surname" class="form-control" id="newSurname" value="'+editObject.surname+'">'
+								+'			</div>'
+								+'		</div>'
+								+'</form>'));
+				
+$('#editModal').modal({
 			  backdrop: 'static',
 			  keyboard: false,
 			  show:true
-			}).one('click', '#sa', function(e) {
-			     $.ajax({
-					type:'DELETE',
-					url: baseUrl+'/member?id='+id,
-					contentType:'application/json',
-					dataType: 'text', 
-					success: function(data){
-						getAllMembers();
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-						console.log(errorThrown);
-					}
-				});
+			}).find('#save').unbind("click").click(function(){
+			    $.ajax({
+						type: 'PUT',
+						url: baseUrl+'/member/'+objId,
+						dataType: 'json',
+						contentType:'application/json',
+						data:JSON.stringify({
+						   "name":$("#newName").val(),
+						   "surname":$("#newSurname").val(),
+						   "cards":editObject.cards
+						}),
+						success: function(res){
+							getAllMembers();
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							console.log(errorThrown);
+						}
+					});
 			});
-}
+};
