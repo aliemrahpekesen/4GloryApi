@@ -14,25 +14,8 @@ public class Card {
 	private Long id;
 	private String number;
 
-	private Integer expireMonth;
-	private Integer expireYear;
+	private LocalDate expireDate;
 	private Integer cvv;
-
-	public Integer getExpireMonth() {
-		return expireMonth;
-	}
-
-	public void setExpireMonth(Integer expireMonth) {
-		this.expireMonth = expireMonth;
-	}
-
-	public Integer getExpireYear() {
-		return expireYear;
-	}
-
-	public void setExpireYear(Integer expireYear) {
-		this.expireYear = expireYear;
-	}
 
 	public Card() {
 	}
@@ -58,13 +41,23 @@ public class Card {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	
+
+
+
 	public Integer getCvv() {
 		return cvv;
 	}
 
 	public void setCvv(Integer cvv) {
 		this.cvv = cvv;
+	}
+
+	public LocalDate getExpireDate() {
+		return expireDate;
+	}
+
+	public void setExpireDate(LocalDate expireDate) {
+		this.expireDate = expireDate;
 	}
 
 }
