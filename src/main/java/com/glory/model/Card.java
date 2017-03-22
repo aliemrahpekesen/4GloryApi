@@ -13,7 +13,6 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 	private String number;
-
 	private LocalDate expireDate;
 	private Integer cvv;
 
