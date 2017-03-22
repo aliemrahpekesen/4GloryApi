@@ -22,6 +22,7 @@ public class MemberController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public Member post(@RequestBody Member memberData) {
+		System.out.println("GIT TEST");
 		return memberService.create(memberData);
 	}
 
