@@ -1,5 +1,7 @@
 package com.glory.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +13,8 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 	private String number;
+	private Integer CVV;
+	private Date expireDate;
 
 	public Card() {
 	}
@@ -37,4 +41,22 @@ public class Card {
 		this.number = number;
 	}
 
+	public Integer getCVV() {
+		return CVV;
+	}
+
+	public void setCVV(Integer cVV) {
+		CVV = cVV;
+	}
+
+	public Date getExpireDate() {
+		return expireDate;
+	}
+
+	public void setExpireDate(Date expireDate) {
+		this.expireDate = expireDate;
+	}
+
+	
+	
 }
