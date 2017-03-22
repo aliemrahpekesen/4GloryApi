@@ -18,6 +18,11 @@ public class Member {
 
 	private String name;
 	private String surname;
+	private long activePoints;
+	private long blockedPoints;
+	private long burntPoints;
+	private String email;
+	private String number;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id")
@@ -32,6 +37,9 @@ public class Member {
 		this.name = name;
 		this.surname = surname;
 		this.cards = cards;
+		this.burntPoints =0L;
+		this.activePoints=20000L;
+		this.blockedPoints=0L;
 	}
 
 	public Long getId() {
@@ -64,6 +72,46 @@ public class Member {
 
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
+	}
+
+	public long getActivePoints() {
+		return activePoints;
+	}
+
+	public void setActivePoints(long activePoints) {
+		this.activePoints = activePoints;
+	}
+
+	public long getBlockedPoints() {
+		return blockedPoints;
+	}
+
+	public void setBlockedpoints(long blockedPoints) {
+		this.blockedPoints = blockedPoints;
+	}
+
+	public long getBurntPoints() {
+		return burntPoints;
+	}
+
+	public void setBurntPoints(long burntPoints) {
+		this.burntPoints = burntPoints;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 }
