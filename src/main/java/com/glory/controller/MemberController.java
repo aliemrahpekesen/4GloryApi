@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,9 +38,11 @@ public class MemberController {
 		return "NoContent";
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
-	public Member put(@RequestBody Member memberData){
-		return memberService.update(memberData);
+	@CrossOrigin(origins="*",allowedHeaders="*" )
+	@RequestMapping(path = "/{id}",method = RequestMethod.PUT)
+	public Member put(@PathVariable("id") String id ,@RequestBody Member memberData){
+		Long memberId = Long.parseLong(id);
+		return memberService.update(memberId,memberData);
 	}
 
 }

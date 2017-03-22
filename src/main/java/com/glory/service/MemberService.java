@@ -30,7 +30,8 @@ public class MemberService {
 		}
 	}
 
-	public Member update(Member member) {
+	public Member update(Long id,Member member) {
+		member.setId(id);
 		return memberRepository.save(member);
 	}
 
