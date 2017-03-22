@@ -13,7 +13,7 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 	private String number;
-	private Integer CVV;
+	private Integer cvv;
 	private Date expireDate;
 
 	public Card() {
@@ -41,12 +41,14 @@ public class Card {
 		this.number = number;
 	}
 
-	public Integer getCVV() {
-		return CVV;
+
+
+	public Integer getCvv() {
+		return cvv;
 	}
 
-	public void setCVV(Integer cVV) {
-		CVV = cVV;
+	public void setCvv(Integer cvv) {
+		this.cvv = cvv;
 	}
 
 	public Date getExpireDate() {
