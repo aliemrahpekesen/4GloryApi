@@ -34,5 +34,9 @@ public class MemberService {
 		member.setId(id);
 		return memberRepository.save(member);
 	}
+	
+	public Member findByCardI(Long id){
+		return memberRepository.findByCardsId(id);
+	}
 
 }
