@@ -40,4 +40,14 @@ public class MileCheckResponse {
 		this.amadeusTransactionID = amadeusTransactionID;
 	}
 
+	public String getPartnerTransactionCode() {
+		return partnerTransactionCode;
+	}
+
+	public void setPartnerTransactionCode(String partnerTransactionCode) {
+		this.partnerTransactionCode = partnerTransactionCode;
+	}
+	
+	
+
 }

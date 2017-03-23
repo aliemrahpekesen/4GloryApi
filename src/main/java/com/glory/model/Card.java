@@ -13,10 +13,9 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 	private String number;
-
 	private LocalDate expireDate;
 	private Integer cvv;
-	
+	private String ffpCode;	
 
 	public Card() {
 	}
@@ -60,5 +59,14 @@ public class Card {
 	public void setExpireDate(LocalDate expireDate) {
 		this.expireDate = expireDate;
 	}
+
+	public String getFfpCode() {
+		return ffpCode;
+	}
+
+	public void setFfpCode(String ffpCode) {
+		this.ffpCode = ffpCode;
+	}
+	
 
 }

@@ -18,9 +18,9 @@ public class Member {
 
 	private String name;
 	private String surname;
-	private long activePoints;
-	private long blockedPoints;
-	private long burntPoints;
+	private float activePoints;
+	private float blockedPoints;
+	private float burntPoints;
 	private String email;
 	private String number;
 
@@ -66,6 +66,30 @@ public class Member {
 		this.surname = surname;
 	}
 
+	public float getActivePoints() {
+		return activePoints;
+	}
+
+	public void setActivePoints(float activePoints) {
+		this.activePoints = activePoints;
+	}
+
+	public float getBlockedPoints() {
+		return blockedPoints;
+	}
+
+	public void setBlockedPoints(float blockedPoints) {
+		this.blockedPoints = blockedPoints;
+	}
+
+	public float getBurntPoints() {
+		return burntPoints;
+	}
+
+	public void setBurntPoints(float burntPoints) {
+		this.burntPoints = burntPoints;
+	}
+
 	public List<Card> getCards() {
 		return cards;
 	}
@@ -74,29 +98,6 @@ public class Member {
 		this.cards = cards;
 	}
 
-	public long getActivePoints() {
-		return activePoints;
-	}
-
-	public void setActivePoints(long activePoints) {
-		this.activePoints = activePoints;
-	}
-
-	public long getBlockedPoints() {
-		return blockedPoints;
-	}
-
-	public void setBlockedpoints(long blockedPoints) {
-		this.blockedPoints = blockedPoints;
-	}
-
-	public long getBurntPoints() {
-		return burntPoints;
-	}
-
-	public void setBurntPoints(long burntPoints) {
-		this.burntPoints = burntPoints;
-	}
 
 	public String getEmail() {
 		return email;
