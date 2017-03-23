@@ -44,7 +44,7 @@ $.ajax({
 	crossDomain:true,
 	url: baseUrl+'/companies',
 	dataType: 'json',
-	async:true,
+	async:false,
 	headers: {
 		"Accept" : "application/json",
 		"Content-Type": "application/json",

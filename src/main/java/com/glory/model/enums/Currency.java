@@ -1,7 +1,7 @@
 package com.glory.model.enums;
 
 public enum Currency {
-	USD("USD"), EURO("EU"), TL("TL");
+	USD("USD"), EUR("EUR"), TRY("TRY");
 
 	private final String code;
 

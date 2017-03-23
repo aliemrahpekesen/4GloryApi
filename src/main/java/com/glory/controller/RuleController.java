@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,9 +38,11 @@ public class RuleController {
 		return "NoContent";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
-	public Rule put(@RequestBody Rule ruleData) {
-		return ruleService.update(ruleData);
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+	public Rule put(@PathVariable("id") String id, @RequestBody Rule ruleData) {
+		Long ruleId = Long.parseLong(id);
+		return ruleService.update(ruleId,ruleData);
 	}
 
 }

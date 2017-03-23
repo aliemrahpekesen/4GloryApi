@@ -30,7 +30,8 @@ public class RuleService {
 		}
 	}
 
-	public Rule update(Rule rule) {		
+	public Rule update(Long id,Rule rule) {
+		rule.setId(id);
 		return ruleRepository.save(rule);
 	}
 	
