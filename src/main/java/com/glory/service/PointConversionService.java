@@ -11,7 +11,7 @@ import com.glory.service.model.ConversionRequest;
 import com.glory.service.model.ConversionResponse;
 
 @Service
-public class ConversionService {
+public class PointConversionService {
 
 	@Autowired
 	CompanyService companyService;
@@ -50,7 +50,7 @@ public class ConversionService {
 
 	private ConversionResponse convert(Rule rule, float monetaryAmount) {
 		ConversionResponse result = new ConversionResponse();
-
+		result.setMonetaryAmount(monetaryAmount);
 		if (monetaryAmount < 0) {
 			result.setMessage("monetary amount cannot be negative");
 		} else {

@@ -17,8 +17,8 @@ public class Rule {
 	private double rate;
 	private Currency currency;
 	private String description;
-	private String partnerId;
-	private String airlineId;
+	private Long partnerId;
+	private Long airlineId;
 	public Long getId() {
 		return id;
 	}
@@ -49,18 +49,19 @@ public class Rule {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getPartnerId() {
+	public Long getPartnerId() {
 		return partnerId;
 	}
-	public void setPartnerId(String partnerId) {
+	public void setPartnerId(Long partnerId) {
 		this.partnerId = partnerId;
 	}
-	public String getAirlineId() {
+	public Long getAirlineId() {
 		return airlineId;
 	}
-	public void setAirlineId(String airlineId) {
+	public void setAirlineId(Long airlineId) {
 		this.airlineId = airlineId;
 	}
+
 	
 	
 	
