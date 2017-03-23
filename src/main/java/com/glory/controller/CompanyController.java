@@ -1,5 +1,7 @@
 package com.glory.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,9 +26,15 @@ public class CompanyController {
 	public @ResponseBody Company retrieveById(@PathVariable("id") Long id) {
 		return companyService.retrieveById(id);
 	}
+
 	@RequestMapping(path = "/{code}", method = RequestMethod.GET)
 	public @ResponseBody Company retrieveById(@PathVariable("code") String code) {
 		return companyService.retrieveByCode(code);
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public @ResponseBody List<Company> retrieveAll() {
+		return companyService.retrieveAll();
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -40,6 +48,12 @@ public class CompanyController {
 		companyService.delete(id);
 		return "NoContent";
 	}
-	
+
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+	public Company put(@PathVariable("id") String id, @RequestBody Company companyData) {
+		Long companyId = Long.parseLong(id);
+		return companyService.update(companyId, companyData);
+	}
 
 }

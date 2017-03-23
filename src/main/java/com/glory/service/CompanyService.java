@@ -1,5 +1,7 @@
 package com.glory.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,10 @@ public class CompanyService {
 
 	public Company save(Company company) {
 		return companyRepository.save(company);
+	}
+
+	public List<Company> retrieveAll() {
+		return (List<Company>) companyRepository.findAll();
 	}
 
 	public Company retrieveById(Long id) {
@@ -33,6 +39,11 @@ public class CompanyService {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	public Company update(Long id, Company company) {
+		company.setId(id);
+		return companyRepository.save(company);
 	}
 
 }
