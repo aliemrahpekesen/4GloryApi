@@ -1,14 +1,25 @@
 package com.glory.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.glory.model.Card;
 import com.glory.model.Member;
+import com.glory.model.Transaction;
 import com.glory.service.model.MileCheckRequest;
 import com.glory.service.model.MileCheckResponse;
 
 @Service
 public class MilesCheckService {
+	
+	@Autowired
+	CardService cardService;
+	
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	TransactionService transactionService;
 
 	public MileCheckResponse checkMileAvailability(MileCheckRequest request) {
 		MileCheckResponse response = new MileCheckResponse();
@@ -17,7 +28,8 @@ public class MilesCheckService {
 		boolean pointsBlocked = false;
 		int requestPoints = 0;
 		
-		//transaction generate et
+		
+		
 		
 		String flyerCode = extractProgramInformation(requestCardNumber);
 		if (flyerCode != null) {
@@ -68,8 +80,16 @@ public class MilesCheckService {
 	}
 
 	private Member matchMemberInformation(Card requestCardInfo) {
-		// TODO DAO and impl with member select info
-		return new Member();
+		 Member result = null;
+		try {
+			Card card =cardService.findByNumber(requestCardInfo.getNumber());
+			result =  memberService.findByCardI(card.getId());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;		
+		
 	}
 
 	private boolean blockMemberPoints(Member requestedMember, int requestPoints, String string) {

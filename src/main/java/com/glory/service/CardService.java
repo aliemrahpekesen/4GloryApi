@@ -30,8 +30,12 @@ public class CardService {
 		}
 	}
 
-	public Card update(Card Card) {
-		return cardRepository.save(Card);
+	public Card update(Card card) {		
+		return cardRepository.save(card);
+	}
+	
+	public Card findByNumber(String number){
+		return cardRepository.findByNumber(number);
 	}
 
 }
