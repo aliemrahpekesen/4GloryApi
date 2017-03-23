@@ -5,5 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.glory.model.Transaction;
 
 public interface TransactionRepository extends CrudRepository<Transaction, Long>{
+	
+	public Transaction findById(Long id);
 
 }

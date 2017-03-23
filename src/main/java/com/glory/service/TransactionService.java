@@ -33,5 +33,9 @@ public class TransactionService {
 	public Transaction update(Transaction transaction) {
 		return transactionRepository.save(transaction);
 	}
+	
+	public Transaction findById(Long id){
+		return transactionRepository.findById(id);
+	}
 
 }

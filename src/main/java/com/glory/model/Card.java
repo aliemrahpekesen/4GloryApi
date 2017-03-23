@@ -1,7 +1,5 @@
 package com.glory.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,9 +11,11 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 	private String number;
-	private LocalDate expireDate;
+	private String expireMonth;
+	private String expireYear;
 	private Integer cvv;
 	private String ffpCode;	
+	private String nameOnCard;
 
 	public Card() {
 	}
@@ -52,12 +52,22 @@ public class Card {
 		this.cvv = cvv;
 	}
 
-	public LocalDate getExpireDate() {
-		return expireDate;
+
+
+	public String getExpireMonth() {
+		return expireMonth;
 	}
 
-	public void setExpireDate(LocalDate expireDate) {
-		this.expireDate = expireDate;
+	public void setExpireMonth(String expireMonth) {
+		this.expireMonth = expireMonth;
+	}
+
+	public String getExpireYear() {
+		return expireYear;
+	}
+
+	public void setExpireYear(String expireYear) {
+		this.expireYear = expireYear;
 	}
 
 	public String getFfpCode() {
@@ -66,6 +76,14 @@ public class Card {
 
 	public void setFfpCode(String ffpCode) {
 		this.ffpCode = ffpCode;
+	}
+
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+
+	public void setNameOnCard(String nameOnCard) {
+		this.nameOnCard = nameOnCard;
 	}
 	
 

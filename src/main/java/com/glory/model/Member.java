@@ -1,7 +1,6 @@
 package com.glory.model;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,17 +28,14 @@ public class Member {
 	private List<Card> cards;
 
 	public Member() {
+		
 	}
 
-	public Member(Long id, String name, String surname, List<Card> cards) {
+	public Member(Long id, String name, String surname) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
-		this.cards = cards;
-		this.burntPoints =0L;
-		this.activePoints=20000L;
-		this.blockedPoints=0L;
 	}
 
 	public Long getId() {
@@ -97,7 +93,6 @@ public class Member {
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
 	}
-
 
 	public String getEmail() {
 		return email;

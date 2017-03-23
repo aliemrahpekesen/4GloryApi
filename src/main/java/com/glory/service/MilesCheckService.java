@@ -46,6 +46,7 @@ public class MilesCheckService {
 				pointsBlocked = blockMemberPoints(requestedMember, requestPoints, request.getCompanyCode());
 				amadeusTransaction.setPoints((long) requestPoints);
 				amadeusTransaction.setStartTime(LocalDateTime.now());
+				amadeusTransaction.setMemberId(requestedMember.getId());
 				amadeusTransaction.setStatus(Status.INITIALIZED);
 				transactionService.create(amadeusTransaction);
 			} else {
@@ -67,6 +68,7 @@ public class MilesCheckService {
 			response.setMessage("POINT BLOCKED");
 			response.setMessageCode(0);
 			response.setAmadeusTransactionID(amadeusTransaction.getId());
+			response.setStatus(Status.BLOCKED.getCode());
 			amadeusTransaction.setStatus(Status.BLOCKED);
 			transactionService.update(amadeusTransaction);
 			return response;
@@ -99,7 +101,7 @@ public class MilesCheckService {
 		Member result = null;
 		try {
 			Card card = cardService.findByNumber(requestCardInfo.getNumber());
-			result = memberService.findByCardI(card.getId());
+			result = memberService.findByCardId(card.getId());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

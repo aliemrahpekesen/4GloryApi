@@ -23,12 +23,17 @@ public class PointConversionService {
 		// TODO Auto-generated method stub
 		ConversionResponse conversionResponse = null;
 		// first find the rule
-		Company partnerCompany = companyService.retrieveByCode(conversionRequest.getPartnerCompanyCode());
-		Company ffpCompany = companyService.retrieveByCode(conversionRequest.getFfpProgramCode());
-		Rule rule = findRule(partnerCompany.getCode(), ffpCompany.getCode());
-
-		// then convert and return
-		conversionResponse = convert(rule, conversionRequest.getMonetaryAmount());
+		Rule rule = null;
+		try {
+			Company partnerCompany = companyService.retrieveByCode(conversionRequest.getPartnerCompanyCode());
+			Company ffpCompany = companyService.retrieveByCode(conversionRequest.getFfpProgramCode());
+			rule = findRule(partnerCompany.getCode(), ffpCompany.getCode());
+			// then convert and return
+			conversionResponse = convert(rule, conversionRequest.getMonetaryAmount());
+		} catch (Exception e) {
+			conversionResponse.setMessage("Conversion Failed, rule problem.");
+			e.printStackTrace();
+		}
 
 		return  conversionResponse;
 	}
