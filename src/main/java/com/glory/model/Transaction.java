@@ -15,6 +15,21 @@ public class Transaction {
 	@GeneratedValue
 	private Long id;
 
+	public Transaction() {
+	}
+
+	public Transaction(Long id, Long ruleId, LocalDateTime startTime, LocalDateTime endTime, Long points, Status status,
+			Long memberId) {
+		super();
+		this.id = id;
+		this.ruleId = ruleId;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.points = points;
+		this.status = status;
+		this.memberId = memberId;
+	}
+
 	private Long ruleId;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;

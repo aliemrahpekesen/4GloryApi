@@ -14,6 +14,16 @@ public class Log {
 	private Long transactionId;
 	private String message;
 
+	public Log() {
+	}
+
+	public Log(Long id, Long transactionId, String message) {
+		super();
+		this.id = id;
+		this.transactionId = transactionId;
+		this.message = message;
+	}
+
 	public Long getId() {
 		return id;
 	}

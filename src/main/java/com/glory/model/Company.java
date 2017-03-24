@@ -14,6 +14,17 @@ public class Company {
 	private String name;
 	private String type;
 
+	public Company() {
+	}
+
+	public Company(Long id, String code, String name, String type) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.name = name;
+		this.type = type;
+	}
+
 	public Long getId() {
 		return id;
 	}

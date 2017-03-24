@@ -17,9 +17,9 @@ public class Member {
 
 	private String name;
 	private String surname;
-	private float activePoints;
-	private float blockedPoints;
-	private float burntPoints;
+	private Float activePoints;
+	private Float blockedPoints;
+	private Float burntPoints;
 	private String email;
 	private String number;
 
@@ -31,12 +31,23 @@ public class Member {
 		
 	}
 
-	public Member(Long id, String name, String surname) {
+	
+
+	public Member(Long id, String name, String surname, Float activePoints, Float blockedPoints, Float burntPoints,
+			String email, String number, List<Card> cards) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
+		this.activePoints = activePoints;
+		this.blockedPoints = blockedPoints;
+		this.burntPoints = burntPoints;
+		this.email = email;
+		this.number = number;
+		this.cards = cards;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -62,27 +73,27 @@ public class Member {
 		this.surname = surname;
 	}
 
-	public float getActivePoints() {
+	public Float getActivePoints() {
 		return activePoints;
 	}
 
-	public void setActivePoints(float activePoints) {
+	public void setActivePoints(Float activePoints) {
 		this.activePoints = activePoints;
 	}
 
-	public float getBlockedPoints() {
+	public Float getBlockedPoints() {
 		return blockedPoints;
 	}
 
-	public void setBlockedPoints(float blockedPoints) {
+	public void setBlockedPoints(Float blockedPoints) {
 		this.blockedPoints = blockedPoints;
 	}
 
-	public float getBurntPoints() {
+	public Float getBurntPoints() {
 		return burntPoints;
 	}
 
-	public void setBurntPoints(float burntPoints) {
+	public void setBurntPoints(Float burntPoints) {
 		this.burntPoints = burntPoints;
 	}
 
