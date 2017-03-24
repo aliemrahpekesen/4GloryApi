@@ -1,0 +1,20 @@
+[
+	{
+		"id":1,
+		"name":"Forma",
+		"image":"1.jpg",
+		"unitPrice":15
+	},
+	{
+		"id":2,
+		"name":"Ayakkabı",
+		"image":"2.jpg",
+		"unitPrice":20
+	},
+	{
+		"id":3,
+		"name":"Mouse",
+		"image":"2.jpg",
+		"unitPrice":2
+	}
+]

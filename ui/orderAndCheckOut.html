@@ -13,8 +13,10 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	  <script src="scripts/general.js"></script>
+	  <script src="scripts/order.js"></script>
+	  <script type="text/javascript" src="scripts/products.json"></script>
    </head>
-   <body>
+   <body onload="loadFile();">
    <div id="section1" class="container-fluid">
          <div id="wrap">
             <div id="accordian">
@@ -23,34 +25,49 @@
                      <span><img src="https://cdn2.iconfinder.com/data/icons/web-icons/512/Shopping_Cart-512.png" alt="Finalize order" style="width:35px;height:35px;"></span>
                   </div>
                   <div class="title">
-                     <h1>Finalize Order</h1>
+                     <h1>Shopping Cart</h1>
                   </div>
                </div>
 			   <div  style="background:white;padding-top:100px"> 
 			   </div>
                <div class="content" id="final_products">
                   <div class="left" id="ordered">
-                     <div class="products">
-                        <div class="product_image">
-                           <img src="img/products/1.jpg"/>
-                        </div>
-                        <div class="product_details">
-                           <span class="product_name">Forma</span>
-                           <span class="quantity">1</span>
-                           <span class="price">$45.00</span>
-                        </div>
-                     </div>
+                     <div class="productContainer">
+						 
+							<div class="form-group">
+							    <label class="control-label col-sm-4" for="type">Product:</label>
+								<div class="col-sm-12" >
+									<div  class="col-sm-10">
+										<select class="form-control"  id="productsDDL" >
+										  
+										</select>
+									</div>
+
+									<div  class="col-sm-2">
+										<button type="submit" style="width:50px; height:35px;" id ="addProduct"onclick="addProduct();" >
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+										</button>
+									</div>
+								</div>
+							</div>
+						
+						<div>
+						<table class="table table-hover" style="color:#000000;">
+							<tbody id="orderList">
+								  
+							</tbody>
+						</table>
+					</div>
+                    </div>
+					
                      <div class="totals">
-                        <span class="subtitle">Subtotal <span id="sub_price">$45.00</span></span>
+                        <span class="subtitle">Subtotal <span id="sub_price"></span></span>
                         <span class="subtitle">Tax <span id="sub_tax">$2.00</span></span>
                         <span class="subtitle">Shipping <span id="sub_ship">$4.00</span></span>
                      </div>
                      <div class="final">
-                        <span class="title">Total <span id="calculated_total">$51.00</span></span>
-						
-						<input id="calc-total" type="text" class="form-control" id="calc-total"/></input>
+                        <span class="title">Total <span id="calculated_total"></span></span>
                      </div>
-					 <span class="title">Total Miles<input id="calculated-points" type="text"  ></input></span>
                   </div>
                   <div class="right" id="reviewed">
 				  <div style="  font-size: 200%; color:darkblue;" >Thank you for choosing our online shop! Don't forget to check your cart before payment. You can find payment options below by clicking 'CHECKOUT' or scrolling down.</div>
