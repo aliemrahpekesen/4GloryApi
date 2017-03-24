@@ -47,7 +47,7 @@ function reCalculateAmount(){
 	});
 	
 	$('#sub_price').text("$"+curSubTotal);
-	$('#calculated_total').text("$"+(curSubTotal+2+4));
+	$('#calculated_total').text((curSubTotal+2+4));
 }
 
 function getProductDetailsById(id){

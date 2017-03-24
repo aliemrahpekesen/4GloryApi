@@ -12,12 +12,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	  <script src="scripts/general.js"></script>
-	  <script src="scripts/order.js"></script>
-	  <script type="text/javascript" src="scripts/products.json"></script>
+      <script src="scripts/general.js"></script>
+      <script src="scripts/order.js"></script>
+      <script type="text/javascript" src="scripts/products.json"></script>
    </head>
    <body onload="loadFile();">
-   <div id="section1" class="container-fluid">
+      <div id="section1" class="container-fluid">
          <div id="wrap">
             <div id="accordian">
                <div class="step" id="step5">
@@ -28,60 +28,53 @@
                      <h1>Shopping Cart</h1>
                   </div>
                </div>
-			   <div  style="background:white;padding-top:100px"> 
-			   </div>
+               <div  style="background:white;padding-top:100px"> 
+               </div>
                <div class="content" id="final_products">
                   <div class="left" id="ordered">
                      <div class="productContainer">
-						 
-							<div class="form-group">
-							    <label class="control-label col-sm-4" for="type">Product:</label>
-								<div class="col-sm-12" >
-									<div  class="col-sm-10">
-										<select class="form-control"  id="productsDDL" >
-										  
-										</select>
-									</div>
-
-									<div  class="col-sm-2">
-										<button type="submit" style="width:50px; height:35px;" id ="addProduct"onclick="addProduct();" >
-											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-										</button>
-									</div>
-								</div>
-							</div>
-						
-						<div>
-						<table class="table table-hover" style="color:#000000;">
-							<tbody id="orderList">
-								  
-							</tbody>
-						</table>
-					</div>
-                    </div>
-					
+                        <div class="form-group">
+                           <label class="control-label col-sm-4" for="type">Product:</label>
+                           <div class="col-sm-12" >
+                              <div  class="col-sm-10">
+                                 <select class="form-control"  id="productsDDL" >
+                                 </select>
+                              </div>
+                              <div  class="col-sm-2">
+                                 <button type="submit" style="width:50px; height:35px;" id ="addProduct"onclick="addProduct();" >
+                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                 </button>
+                              </div>
+                           </div>
+                        </div>
+                        <div>
+                           <table class="table table-hover" style="color:#000000;">
+                              <tbody id="orderList">
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
                      <div class="totals">
                         <span class="subtitle">Subtotal <span id="sub_price"></span></span>
-                        <span class="subtitle">Tax <span id="sub_tax">$2.00</span></span>
-                        <span class="subtitle">Shipping <span id="sub_ship">$4.00</span></span>
+                        <span class="subtitle">Tax <span id="sub_tax">$</span></span>
+                        <span class="subtitle">Shipping <span id="sub_ship">$</span></span>
                      </div>
                      <div class="final">
-                        <span class="title">Total <span id="calculated_total"></span></span>
+                        <span class="title">Total $<span id="calculated_total"></span></span>
                      </div>
                   </div>
                   <div class="right" id="reviewed">
-				  <div style="  font-size: 200%; color:darkblue;" >Thank you for choosing our online shop! Don't forget to check your cart before payment. You can find payment options below by clicking 'CHECKOUT' or scrolling down.</div>
+                     <div style="  font-size: 200%; color:darkblue;" >Thank you for choosing our online shop! Don't forget to check your cart before payment. You can find payment options below by clicking 'CHECKOUT' or scrolling down.</div>
                      <div style=" position: relative;
-						top: 90px;" id="complete">
+                        top: 90px;" id="complete">
                         <div  class="collapse navbar-collapse" id="myNavbar">
-						  <ul  class="nav navbar-nav">
+                           <ul  class="nav navbar-nav">
                               <li ><a style="border: 2px solid darkblue; border-radius: 5px; width:200px;text-align: center; font-weight: bold;">CONTINUE SHOPPING</a></li>
                            </ul>
                            <ul  class="nav navbar-nav">
                               <li ><a href="#section2" style="border: 2px solid darkblue; border-radius: 5px; width:200px;text-align: center; font-weight: bold;">CHECKOUT</a></li>
                            </ul>
                         </div>
-                   
                      </div>
                   </div>
                </div>
@@ -105,37 +98,45 @@
          <div class="container">
             <div class="row">
                <div class="paymentCont">
-                  <div class="headingWrap"><p>
-                     <h3 class="headingTop text-center"><font color="blue">Select Your Payment Method</font></h3>
-					 </p>
-                     <p class="text-center"><font color="blue">------------------------------------------</font></p>
+                  <div class="headingWrap">
+                     <p>
+                     <div class="headline">
+                        <h6></h6>
+                        <h1>
+                           our boys have done it
+                           <h6></h6>
+                        </h1>
+                        <h2>Select Your Payment Method</h2>
+                     </div>
+                     <h3 class="headingTop text-center"><font color="black">Select Your Payment Method</font></h3>
+                     </p>
                   </div>
                   <div class="paymentWrap">
                      <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
                         <label class="btn paymentMethod active">
                            <div class="method visa" id ="visaId"></div>
-                           <input type="radio" name="options" checked> 
+                           <input type="radio" name="options" id="compCode" value="TK" checked> 
                         </label>
                         <label class="btn paymentMethod">
                            <div class="method master" ></div>
-                           <input type="radio" name="options"> 
+                           <input type="radio" name="options" id="compId" value="TK"> 
                         </label>
                         <label class="btn paymentMethod">
                            <div class="method amex"></div>
-                           <input type="radio" name="options">
+                           <input type="radio" name="options" id="compId" value="TK">
                         </label>
                         <label class="btn paymentMethod">
                            <div class="method milesAndBonus"></div>
-                           <input type="radio" name="options"  onclick="convertToMiles(this);"> 
+                           <input type="radio" name="options" id="compId" value="TK"  onclick="convertToMiles(this);"> 
                         </label>
                         <label class="btn paymentMethod">
                            <div class="method milesAndSmiles"></div>
-                           <input type="radio" name="options"> 
+                           <input type="radio" name="options" id="companyId" value="TK" onclick="convertToMiles(this);> 
                         </label>
-                     </div>
+                     </div>			
                   </div>
                   <div class="footerNavWrap clearfix">
-                     <div style="background-color:white;border: 2px solid darkblue; border-radius: 5px;text-align: center; font-weight: bold;" class="btn btn-info pull-left btn-fyi">			      
+                     <div style="background-color:white;border: 2px solid darkblue; border-radius: 5px;text-align: center; font-weight: bold;" class="btn btn-info pull-left btn-fyi">
                         <div  class="collapse navbar-collapse" id="myNavbar">
                            <ul class="nav navbar-nav">
                               <li><a  href="#section1">CANCEL</a></li>
@@ -148,118 +149,116 @@
                               <li><a href="#section3" >CONTINUE</a></li>
                            </ul>
                         </div>
-                        
                      </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-          <div id="section3" class="container-fluid">
-      <div id="wrap">
-         <div id="accordian">
-            <div class="step" id="step4">
-               <div class="number">
-                  <span><span><span><img src="http://www.freeiconspng.com/uploads/credit-card-black-png-0.png" alt="Card Information" style="width:35px;height:35px;"></span></span></span>
-               </div>
-               <div class="title">
-                  <h1>Card Information</h1>
+      <div id="section3" class="container-fluid">
+         <div id="wrap">
+            <div id="accordian">
+               <div class="step" id="step4">
+                  <div class="number">
+                     <span><span><span><img src="http://www.freeiconspng.com/uploads/credit-card-black-png-0.png" alt="Card Information" style="width:35px;height:35px;"></span></span></span>
+                  </div>
+                  <div class="title">
+                     <h1>Card Information</h1>
+                  </div>
                </div>
             </div>
+            <br/>
          </div>
-		 <br/>
-      </div>
-      <div class="container-fluid >
-      <div class="row">
-         <div class="col-md-16 text-center">
-            <br />
-            <br />
+         <div class="container-fluid >
             <div class="row">
-               <div class="col-md-4 col-md-offset-4">
-					<div style="width:125%; margin:0 auto;"class="credit-card-div">
-                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                           <div class="row">
-                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                 <h5 class="text-muted">Loyalty Card Number</h5>
+            <div class="col-md-16 text-center">
+               <br /> <br />
+               <br />
+               <div class="row">
+                  <div class="col-md-4 col-md-offset-4">
+                     <div style="width:125%; margin:0 auto;"class="credit-card-div">
+                        <div class="panel panel-default">
+                           <div class="panel-heading">
+                              <div class="row">
+                                 <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <h5 class="text-muted">Loyalty Card Number</h5>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="number" class="form-control" id="card1" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4"/>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="number" class="form-control" id="card2" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4" min = "1" max = "9999"/>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="number" class="form-control" id="card3" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4" min = "1" max = "9999"/>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="number" class="form-control" id="card4" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4" min = "1" max = "9999"/>
+                                 </div>
                               </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <input type="number" class="form-control" id="card1" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4"/>
+                              <div class="row ">
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <span class="help-block text-muted small-font"> Expiry Month</span>
+                                    <select name="exp_month" class="form-control" value="" id="exp_month" placeholder="" data-trigger="change" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Expiration Date">
+                                       <option value = "1">01 (Jan)</option>
+                                       <option value = "2">02 (Feb)</option>
+                                       <option value = "3">03 (Mar)</option>
+                                       <option value = "4">04 (Apr)</option>
+                                       <option value = "5">05 (May)</option>
+                                       <option value = "6">06 (Jun)</option>
+                                       <option value = "7">07 (Jul)</option>
+                                       <option value = "8">08 (Aug)</option>
+                                       <option value = "9">09 (Sep)</option>
+                                       <option value = "10">10 (Oct)</option>
+                                       <option value = "11">11 (Nov)</option>
+                                       <option value = "12">12 (Dec)</option>
+                                    </select>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <span class="help-block text-muted small-font">  Expiry Year</span>
+                                    <select name="exp_year" value="" class="form-control" id="exp_year" placeholder="" data-trigger="change" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Expiration Date">
+                                       <option>2017</option>
+                                       <option>2018</option>
+                                       <option>2019</option>
+                                       <option>2020</option>
+                                       <option>2021</option>
+                                       <option>2022</option>
+                                       <option>2023</option>
+                                       <option>2024</option>
+                                       <option>2025</option>
+                                    </select>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <span class="help-block text-muted small-font">  CCV</span>
+                                    <input type="number" class="form-control" placeholder="CCV" oninput="maxLengthCheckCcv(this)" id="cvv" maxlength = "3" min = "100" max = "999"/>
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <img src="data:image/png;base64,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" class="img-rounded" />
+                                 </div>
                               </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <input type="number" class="form-control" id="card2" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4" min = "1" max = "9999"/>
+                              <div class="row ">
+                                 <div class="col-md-12 pad-adjust">
+                                    <br/>
+                                    <input type="text" class="form-control" id="nameOnCard" placeholder="Name On Card" maxlength = "50"/>
+                                 </div>
                               </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <input type="number" class="form-control" id="card3" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4" min = "1" max = "9999"/>
-                              </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <input type="number" class="form-control" id="card4" oninput="maxLengthCheckCardNumber(this)" placeholder="****" maxlength = "4" min = "1" max = "9999"/>
-                              </div>
-                           </div>
-                           <div class="row ">
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <span class="help-block text-muted small-font"> Expiry Month</span>
-									<select name="exp_month" class="form-control" value="" id="exp_month" placeholder="" data-trigger="change" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Expiration Date">
-										<option value = "1">01 (Jan)</option>
-										<option value = "2">02 (Feb)</option>
-										<option value = "3">03 (Mar)</option>
-										<option value = "4">04 (Apr)</option>
-										<option value = "5">05 (May)</option>
-										<option value = "6">06 (Jun)</option>
-										<option value = "7">07 (Jul)</option>
-										<option value = "8">08 (Aug)</option>
-										<option value = "9">09 (Sep)</option>
-										<option value = "10">10 (Oct)</option>
-										<option value = "11">11 (Nov)</option>
-										<option value = "12">12 (Dec)</option>
-									</select>
-                              </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <span class="help-block text-muted small-font">  Expiry Year</span>
-									<select name="exp_year" value="" class="form-control" id="exp_year" placeholder="" data-trigger="change" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Expiration Date">
-										<option>2017</option>
-										<option>2018</option>
-										<option>2019</option>
-										<option>2020</option>
-										<option>2021</option>
-										<option>2022</option>
-										<option>2023</option>
-										<option>2024</option>
-										<option>2025</option>
-									</select>
-                              </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <span class="help-block text-muted small-font">  CCV</span>
-                                 <input type="number" class="form-control" placeholder="CCV" oninput="maxLengthCheckCcv(this)" id="cvv" maxlength = "3" min = "100" max = "999"/>
-                              </div>
-                              <div class="col-md-3 col-sm-3 col-xs-3">
-                                 <img src="data:image/png;base64,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" class="img-rounded" />
-                              </div>
-                           </div>
-                           <div class="row ">
-                              <div class="col-md-12 pad-adjust">
+                              <div class="row ">
                                  <br/>
-                                 <input type="text" class="form-control" id="nameOnCard" placeholder="Name On Card" maxlength = "50"/>
-                              </div>
-                           </div>
-                           <div class="row ">
-                              <br/>
-                              <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                 <input  class="btn btn-primary" value="CANCEL" onclick="backToHome();"/>
-                              </div>
-                              <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                 <input type="submit" class="btn btn-primary btn-block" value="PAY NOW" onclick="addCard();"/>
+                                 <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                                    <input  class="btn btn-primary" value="CANCEL" onclick="backToHome();"/>
+                                 </div>
+                                 <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                                    <input type="submit" class="btn btn-primary btn-block" value="PAY NOW" onclick="blockMiles();"/>
+                                 </div>
                               </div>
                            </div>
                         </div>
                      </div>
-					 <input type="submit" class="btn btn-primary btn-block" value="GET RATIO" onclick="convertToMiles();"/>
+                     <!-- CREDIT CARD DIV END -->
                   </div>
-                  <!-- CREDIT CARD DIV END -->
                </div>
             </div>
          </div>
       </div>
-	</div>
    </body>
 </html>

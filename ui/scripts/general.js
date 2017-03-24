@@ -28,7 +28,7 @@ $(document).ready(function () {
 	});
 });
 
-function addCard() {
+function blockMiles() {
 	var card1 = $("#card1").val();
 	var card2 = $("#card2").val();
 	var card3 = $("#card3").val();
@@ -37,7 +37,7 @@ function addCard() {
 	alert(appended);
 	$.ajax({
 		type : 'POST',
-		url : 'http://localhost:8080/cards',
+		url : 'http://localhost:8080/checkMiles',
 		dataType : 'json',
 		async : false,
 		headers : {
@@ -45,19 +45,26 @@ function addCard() {
 			"Content-Type" : "application/json"
 		},
 		data : JSON.stringify({
-			"number" : appended,
+			"cardInfo":{"number" : appended,
 			"expireMonth" : $("#exp_month").val(),
 			"expireYear" : $("#exp_year").val(),
 			"cvv" : $("#cvv").val(),
-			"nameOnCard" : $("#nameOnCard").val()
+			"nameOnCard" : $("#nameOnCard").val(),
+			"ffpCode":$("#companyId").val()},
+			"companyCode":"MG",
+			"amount":$("#calculated_total").val(),
+			"currency":"USD",
+			"partnerTransactionCode":"1534313541531435124312434312321533"					
 		}),
 		success : function (res) {
 			alert($("#appended").val());
 			console.log('response:' + res);
+			location.replace("success.html");
 		},
 		error : function (XMLHttpRequest, textStatus, errorThrown) {
 			alert('fail');
 			console.log(errorThrown);
+			location.replace("success.html");
 		}
 	});
 };
@@ -73,9 +80,9 @@ function convertToMiles(airPartnerCode) {
 			"Content-Type" : "application/json"
 		},
 		data : JSON.stringify({
-			"monetaryAmount" : $("#calc-total").val(),
+			"monetaryAmount" : $("#calculated_total").val(),
 			"partnerCompanyCode" : "MG",
-			"ffpProgramCode" : airPartnerCode
+			"ffpProgramCode" : $("#companyId").val()		
 		}),
 		success : function (res) {
 			document.getElementById("calculated-points").value = res.milesAmount;
@@ -89,14 +96,14 @@ function convertToMiles(airPartnerCode) {
 	});
 };
 function backToHome() {
-	location.replace("CardInfo.html")
+		location.replace("orderAndCheckOut.html")
 };
 
 function maxLengthCheckCardNumber(object) {
 	if (object.value.length > object.maxLength)
 		object.value = object.value.slice(0, object.maxLength)
-}
+};
 function maxLengthCheckCcv(object) {
 	if (object.value.length > object.maxLength)
 		object.value = object.value.slice(0, object.maxLength)
-}
+};

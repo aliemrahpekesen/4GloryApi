@@ -2,19 +2,19 @@
 	{
 		"id":1,
 		"name":"Forma",
-		"image":"1.jpg",
+		"image":"mouse.png",
 		"unitPrice":15
 	},
 	{
 		"id":2,
-		"name":"AyakkabÄ±",
-		"image":"2.jpg",
+		"name":"Ayakkabý",
+		"image":"ayak.jpg",
 		"unitPrice":20
 	},
 	{
 		"id":3,
 		"name":"Mouse",
-		"image":"2.jpg",
+		"image":"mouse.jpg",
 		"unitPrice":2
 	}
 ]
