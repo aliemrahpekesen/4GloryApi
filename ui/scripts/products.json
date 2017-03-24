@@ -1,20 +1,20 @@
 [
 	{
 		"id":1,
-		"name":"Forma",
-		"image":"mouse.png",
+		"name":"Shirt",
+		"image":"shirt.jpg",
 		"unitPrice":15
 	},
 	{
 		"id":2,
-		"name":"Ayakkabý",
-		"image":"ayak.jpg",
+		"name":"Shoe",
+		"image":"shoe.jpg",
 		"unitPrice":20
 	},
 	{
 		"id":3,
 		"name":"Mouse",
 		"image":"mouse.jpg",
-		"unitPrice":2
+		"unitPrice":5
 	}
 ]

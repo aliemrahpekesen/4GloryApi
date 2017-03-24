@@ -87,6 +87,12 @@ $.each(memberList,function(i,obj){
 									$('<td>').append(obj.number)
 								)
 						 .append(
+									$('<td>').append(obj.activePoints)
+								)
+						 .append(
+									$('<td>').append(obj.burntPoints)
+								)
+						 .append(
 									$('<td align="right">').append(manipulationColumn)
 								)
 				)

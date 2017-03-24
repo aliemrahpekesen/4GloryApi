@@ -45,26 +45,102 @@ function reCalculateAmount(){
 		var rowTotal = parseInt(priceOfProduct)*parseInt(quantityOfProduct);
 		curSubTotal+=rowTotal;
 	});
+	curTotal= curSubTotal+2+4;
 	
 	$('#sub_price').text("$"+curSubTotal);
-	$('#calculated_total').text((curSubTotal+2+4));
+	$('#calculated_total').text("$"+curTotal);
 }
 
 function getProductDetailsById(id){
 	return products.filter(function(n,i){
 		return n.id==id;
 	})[0];
+};
+
+function convertToMiles() {
+	console.log('GELDİK BABA');
+	$.ajax({
+		type : 'POST',
+		url : 'http://localhost:8080/convertToMiles',
+		dataType : 'json',
+		async : false,
+		headers : {
+			"Accept" : "application/json",
+			"Content-Type" : "application/json"
+		},
+		data : JSON.stringify({
+			"monetaryAmount" : curTotal,
+			"partnerCompanyCode" : "MG",
+			"ffpProgramCode" : "TK"		
+		}),
+		success : function (res) {
+			$('#conversionOfMiles').text("Mile Amount : "+ res.milesAmount);
+		},
+		error : function (XMLHttpRequest, textStatus, errorThrown) {
+			alert('fail');
+			console.log(errorThrown);
+		}
+	});
+};
+
+function blockMiles() {
+	var card1 = $("#card1").val();
+	var card2 = $("#card2").val();
+	var card3 = $("#card3").val();
+	var card4 = $("#card4").val();
+	var appended = card1 + card2 + card3 + card4;
+	$.ajax({
+		type : 'POST',
+		url : 'http://localhost:8080/checkMiles',
+		dataType : 'json',
+		async : false,
+		headers : {
+			"Accept" : "application/json",
+			"Content-Type" : "application/json"
+		},
+		data : JSON.stringify({
+			"cardInfo":{"number" : appended,
+			"expireMonth" : $("#exp_month").val(),
+			"expireYear" : $("#exp_year").val(),
+			"cvv" : $("#cvv").val(),
+			"nameOnCard" : $("#nameOnCard").val(),
+			"ffpCode":"TK"},
+			"companyCode":"MG",
+			"amount":curTotal,
+			"currency":"USD",
+			"partnerTransactionCode":"1534313541531435124312434312321533"					
+		}),
+		success : function (res) {
+			if(res.status=="BLK"){
+				burnMiles(res);
+			}
+		},
+		error : function (XMLHttpRequest, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+};
+
+function burnMiles(data){
+console.log(data);
+$.ajax({
+	type : 'POST',
+	url : 'http://localhost:8080/burnMiles',
+	dataType : 'json',
+	async : false,
+	headers : {
+		"Accept" : "application/json",
+		"Content-Type" : "application/json"
+	},
+	data : JSON.stringify({
+			"amadeusTransactionId": data.amadeusTransactionID,
+			"partnerTransactionId": data.partnerTransactionCode
+			}),
+	success : function (res) {
+		location.replace('success.html');
+	},
+	error : function (XMLHttpRequest, textStatus, errorThrown) {
+		console.log(errorThrown);
+	}
+});
 }
-
-
-
-
-/*
-<div class="product_image">
-                           <img src="img/products/1.jpg"/>
-                        </div>
-                        <div class="product_details">
-                           <span class="product_name">Forma</span>
-                           <span class="quantity">1</span>
-                           <span class="price">$45.00</span>
-                        </div>*/

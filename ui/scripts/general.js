@@ -28,7 +28,7 @@ $(document).ready(function () {
 	});
 });
 
-function blockMiles() {
+function checkCard() {
 	var card1 = $("#card1").val();
 	var card2 = $("#card2").val();
 	var card3 = $("#card3").val();
@@ -37,7 +37,7 @@ function blockMiles() {
 	alert(appended);
 	$.ajax({
 		type : 'POST',
-		url : 'http://localhost:8080/checkMiles',
+		url : 'http://localhost:8080/cards',
 		dataType : 'json',
 		async : false,
 		headers : {
@@ -45,65 +45,33 @@ function blockMiles() {
 			"Content-Type" : "application/json"
 		},
 		data : JSON.stringify({
-			"cardInfo":{"number" : appended,
+			"number" : appended,
 			"expireMonth" : $("#exp_month").val(),
 			"expireYear" : $("#exp_year").val(),
 			"cvv" : $("#cvv").val(),
-			"nameOnCard" : $("#nameOnCard").val(),
-			"ffpCode":$("#companyId").val()},
-			"companyCode":"MG",
-			"amount":$("#calculated_total").val(),
-			"currency":"USD",
-			"partnerTransactionCode":"1534313541531435124312434312321533"					
+			"nameOnCard" : $("#nameOnCard").val()
 		}),
 		success : function (res) {
 			alert($("#appended").val());
 			console.log('response:' + res);
-			location.replace("success.html");
+			location.replace('success.html');
 		},
 		error : function (XMLHttpRequest, textStatus, errorThrown) {
 			alert('fail');
 			console.log(errorThrown);
-			location.replace("success.html");
 		}
 	});
 };
 
-function convertToMiles(airPartnerCode) {
-	$.ajax({
-		type : 'POST',
-		url : 'http://localhost:8080/convertToMiles',
-		dataType : 'json',
-		async : false,
-		headers : {
-			"Accept" : "application/json",
-			"Content-Type" : "application/json"
-		},
-		data : JSON.stringify({
-			"monetaryAmount" : $("#calculated_total").val(),
-			"partnerCompanyCode" : "MG",
-			"ffpProgramCode" : $("#companyId").val()		
-		}),
-		success : function (res) {
-			document.getElementById("calculated-points").value = res.milesAmount;
-			alert(res);
-			console.log('response:' + res);
-		},
-		error : function (XMLHttpRequest, textStatus, errorThrown) {
-			alert('fail');
-			console.log(errorThrown);
-		}
-	});
-};
 function backToHome() {
-		location.replace("orderAndCheckOut.html")
+	location.replace("orderAndCheckOut.html")
 };
 
 function maxLengthCheckCardNumber(object) {
 	if (object.value.length > object.maxLength)
 		object.value = object.value.slice(0, object.maxLength)
-};
+}
 function maxLengthCheckCcv(object) {
 	if (object.value.length > object.maxLength)
 		object.value = object.value.slice(0, object.maxLength)
-};
+}
